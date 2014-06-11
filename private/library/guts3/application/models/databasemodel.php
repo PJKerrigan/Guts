@@ -18,10 +18,7 @@ class DatabaseModel extends Model {
      *  Constructor.
      */
     public function __construct() {
-<<<<<<< HEAD
         $options        = array();
         $this->db       = new LazyPDO(DB_DSN, DB_USER, DB_PASS);
-=======
->>>>>>> origin/master
     }
 }
