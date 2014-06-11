@@ -1,0 +1,80 @@
+/*
+ *	Responsive grid-system using SASS.
+ */
+
+//	Apply a clean box-model to all elements.
+* {
+	box-sizing:			border-box;
+}
+
+//	Creating placeholders for all grid columns.
+@for $i from 1 through $grid-columns {
+	%grid-col-#{$i} {
+		$multiplier:	$i / $grid-columns;
+		width:			calc(100% * #{$multiplier} - #{$grid-gutter} * (1 - #{$multiplier}));
+	}
+}
+
+//	Parent grid wrapper.
+%grid-parent {
+	overflow:			hidden;
+}
+
+//	Child grid columns.
+%grid-child {
+	float:				left;
+	margin-right:		$grid-gutter;
+}
+
+//	Last grid child.
+%grid-last-child {
+	margin-right:		0;
+}
+
+/*
+ *	Instantiate placeholder inside a media-query, so that it can
+ *	be extended from within the same media-query elsewhere,  in
+ *	the CSS. This aims at reducing CSS output by merging those
+ *	rules.
+ */
+@media (max-width: $grid-breakpoint) {
+	%grid-fallback > #{$grid-children} {
+		width:			100% !important;
+		float:			none;
+		margin-right:	0;
+	}
+}
+
+/*
+ *	Mixin to be called on the parent. Uses :nth-of-type selectors
+ *	to define columns' width.
+ *
+ *	eg: grid(1, 2, 4, 5) results in the following:
+ *	| 1 |  2  |    4    |     5     |
+ */
+@mixin grid($cols...) { 
+	@extend %grid-parent;
+
+	//	Direct children (default <div>).
+	> #{$grid-children} { 
+		@extend %grid-child;
+    
+		//	Setup the columns.
+		@for $i from 1 through length($cols) {
+			&:nth-of-type(#{$i}n) {
+				@extend %grid-col-#{nth($cols, $i)};
+			}
+		}
+		//	Cancel the right-margin on the final column in each row.
+		&:nth-of-type(#{length($cols)}n) {
+			@extend %grid-last-child;
+		}
+	}
+	
+	@media (max-width: $grid-breakpoint) {
+		float:			none;
+		width:			100%;
+		margin-right:	0;
+	}
+}
+

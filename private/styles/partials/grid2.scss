@@ -1,0 +1,32 @@
+*,
+*:after,
+*:before {
+	@include box-sizing(border-box);
+	margin:			0;
+	padding:		0;
+}
+
+/*
+ *	Attribute selector.
+ */
+[class*='bit-'] {
+	float:			left;
+	padding:		10px;
+}
+
+/*
+ *	Floats last ".bit-" to the right.
+ */
+[class*='bit-']:last-of-type {
+	padding-right:	10px;
+	float:			right;
+}
+
+/*
+ *	Clearfix.
+ */
+.frame:after {
+	content:		"";
+	display:		table;
+	clear:			both;
+}

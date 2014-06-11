@@ -1,0 +1,48 @@
+//	Global styles.
+*,
+*:before,
+*:after {
+	margin:			0;
+	padding:		0;
+	@include box-sizing(border-box);
+}
+
+html {
+	margin:			0;
+	padding:		0;
+}
+
+//	Page body.
+body {
+	font-size:      100%;
+	font-family:    "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Helvetica, Arial, sans-serif;
+    font-weight:    normal;
+    background:     #F3F2E8;
+    color:          #51463D;
+	padding:		10px 120px 10px;
+}
+
+//	Ampersands within the headers.
+span.amp {
+	font-family:	Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+	font-size:		1.2em;
+	font-weight:	normal;
+	font-style:		italic;
+	color:          #766557;
+}
+
+article.entry {
+	@include opacity(0.55);
+	display:		block;
+	width:			88%;
+	div.entry-body {
+		p {
+			padding:	10px 0px 10px;
+		}
+	}
+}
+
+//	Wrapper containing the entire page.
+.pageContainer {
+	background:		red;
+}

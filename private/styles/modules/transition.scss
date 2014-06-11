@@ -1,0 +1,7 @@
+@mixin transition($amount) {
+	transition:			$amount;
+	-webkit-transition:	$amount;
+	-moz-transition:	$amount;
+	-o-transition:		$amount;
+	-ms-transition:		$amount;
+}

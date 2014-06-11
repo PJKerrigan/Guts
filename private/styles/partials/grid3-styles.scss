@@ -1,0 +1,84 @@
+.main {
+	padding:			$grid-gutter;
+}
+
+/*
+ *	Including the grid-construction mixin.
+ *	First column: 2 of 12. Second column: 8 of 12. Third column: 2 of 12.
+ */
+.wrapper {
+	@include grid(12);
+}
+
+/*
+ *	Including the mixin for the inner-grid.
+ *	Specifies the pattern for a singular row, repeated for following rows.
+ */
+.main {
+	@include grid(2, 2, 2, 2, 2, 2);
+	padding-bottom:			0;
+}
+
+/*
+ *	Including the mixin for the inner-grid.
+ *	Specifies the pattern for a singular row, repeated for following rows.
+ */
+.footer {
+	@include grid(4, 4, 4);
+}
+
+.header {
+	@include grid(2, 10);
+}
+
+.footer, 
+.header {
+	margin:					$grid-gutter 0;
+}
+
+//	Only relative to the demonstration layout.
+.sidebar,
+.aside {
+	min-height:				calc(5em * 3 + 4 * #{$grid-gutter});
+}
+
+.block {
+	min-height:				5em;
+	margin-bottom:			$grid-gutter;
+}
+
+.col {
+	min-height:				0 $grid-gutter;
+}
+
+body {
+	padding:				0 $grid-gutter;
+}
+
+//	Colors!
+.header,
+.footer {
+	background:				#7F8C8D;
+}
+
+.sidebar,
+.aside {
+	background:				#1ABC9C;
+}
+
+.main {
+	background:				#3498DB;
+}
+
+.block {
+	background:				#34495E;
+}
+
+.col {
+	background:				darken(#7F8C8D, 20%);
+}
+
+.p {
+	text-align:				center;
+	font-family:			Arial, sans-serif;
+}

@@ -1,0 +1,20 @@
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box)				;
+	margin:					0					;
+	padding:				0					;
+}
+
+body {
+	padding:				10px 50px 200px 	;
+	background:				#c6c6c6				;
+}
+
+h1 {
+	color:					white				;
+	em {
+		color:				#666666				;
+		font-size:			16px				;
+	}
+}

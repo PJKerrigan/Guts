@@ -1,0 +1,11 @@
+$viewport:			extend-to-zoom;
+
+@viewport {
+	zoom:			1.0;
+	width:			$viewport;
+}
+
+@-ms-viewport{
+    width: 			$viewport;
+    zoom:			1;
+}

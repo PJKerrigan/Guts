@@ -1,0 +1,26 @@
+/*
+ *	Buttons.
+ *	Defines an abstract placeholder for use with buttons.
+ */
+@mixin nav-button($padding) {
+	display:			inline-block;
+	position:			relative;
+	cursor:				pointer;
+	background:			#222222 url("public/img/alert-overlay.jpg") repeat-x;
+	padding:			$padding;
+	color:				#FFFFFF;
+	text-decoration:	none;
+	font-weight:		bold;
+	line-height:		1;
+	text-shadow:		0 -1px 1px rgba(0, 0, 0, 0.25);
+	border-bottom:		1px solid rgba(0, 0, 0, 0.25);
+
+	//	Border-radius.
+	@include border-radius(5px);
+	//	Box-shadow.
+	@include box-shadow(0, 1px, 3px, rgba(0, 0, 0, 0.5));
+}
+
+.button1 {
+	@include nav-button(10px);
+}

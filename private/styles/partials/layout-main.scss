@@ -1,0 +1,60 @@
+//	Layout
+
+//	Navigation
+nav {
+	ul {
+		list-style-type:			none;
+		padding-left:				0;
+		li {
+			float:					left;
+			padding:				0 5px;
+			a {
+				background-color:	#618;
+				font-size:			1.1em;
+				font-weight:		bold;
+				color:				#FFF;
+				padding:			4px 16px;
+				text-decoration:	none;
+			}
+		}
+	}
+}
+
+.container {
+	max-width:						600px;
+	margin:							20px auto;
+	-webkit-box-sizing:				border-box;
+	-moz-box-sizing:				border-box;
+	box-sizing:						border-box;
+}
+
+.fancy {
+	@extend .container;
+	padding:						50px;
+	border:							solid blue 10px;
+}
+
+.static {
+	position:						static;
+}
+
+.relative {
+	position:						relative;
+}
+
+.relative1 {
+	@extend .relative;
+	top:							40px;
+	left:							20px;
+	background-color:				white;
+	width:							500px;
+}
+
+//	Mixins.
+
+//	Rounded corners using border-radius.
+@mixin rounded-corners($radius) {
+	-webkit-border-radius:			$radius;
+	-moz-border-radius:				$radius;
+	border-radius:					$radius;
+}

@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+::selection {
+	background:				#333333;
+	color:					#FFFFFF;
+}
+
+::webkit-scrollbar {
+	width:					9px;
+}
+
+::webkit-scrollbar-track {
+	background:				#EEEEEE;
+	border:					thin solid lightgray;
+	box-shadow:				0px 0px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+::-webkit-scrollbar-thumb {
+	background:				#999999;
+	border:					thin solid gray;
+}
+
+body {
+	font-family:			'Open Sans', sans-serif;
+	background:				url('public/img/bg.gif');
+	padding:				0px;
+	margin:					0px;
+	border-top:				10px solid #9D2E2C;
+}
+
+.container {
+	width:					960px;
+	margin:					10px auto;
+	-webkit-transform:		translateZ(0);
+}
+
+header {
+	text-align:				center;
+	font-weight:			300;
+	font-size:				700%;
+}
+
+footer {
+	text-align:				center;
+	height:					100px;
+	line-height:			100px;
+	color:					gray;
+	clear:					both;
+}
+
+nav ul {
+	list-style:				none;
+	padding:				0;
+	margin:					50px 0px;
+	text-align:				center;
+	li {
+		@include transition(0.3s);
+		display:			inline;
+		cursor:				pointer;
+		margin-right:		10px;
+		color:				#666666;
+		&:hover {
+			color:			#000000;
+			&:after {
+				color:		#BBBBBB;
+			}
+		}
+		&:after {
+			margin-left:	10px;
+			content:		"/";
+			color:			#BBBBBB;
+		}
+		&:last-child {
+			margin-right:	0;
+			&:after {
+				content:	"";
+			}
+		}
+	}
+}
+
+nav ul li {
+	display:			inline;
+	cursor:				pointer;
+	margin-right:		10px;
+	color:				#666666;
+
+}
