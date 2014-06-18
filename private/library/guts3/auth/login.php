@@ -94,17 +94,13 @@ class Login {
      */
     public function clearLoginAttempts($user_id) {
         if (!isset($this->clear_stmt) or empty($this->clear_stmt)) {
-            e("Creating clear_stmt.");
             $this->clear_stmt           = $this->db->prepare("DELETE FROM login_attempts WHERE user_id = :user_id");
         }
         try {
-            e("Binding params to clear_stmt.");
             $this->clear_stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
-            e("Executing clear_stmt.");
             $this->clear_stmt->execute();
             return TRUE;
         } catch (PDOException $ex) {
-            e("Exception when using clear_stmt.");
             return FALSE;
         }
     }
