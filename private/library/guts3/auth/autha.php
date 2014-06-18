@@ -14,10 +14,7 @@ class AuthA {
      */
     public function login($email, $password) {
         // Using prepared statements means that SQL injection is not possible. 
-        if ($stmt = $this->mysqli->prepare("SELECT id, username, password, salt 
-            FROM members
-           WHERE email = ?
-            LIMIT 1")) {
+        if ($stmt = $this->mysqli->prepare("SELECT id, username, pass, salt FROM users WHERE email = ? LIMIT 1")) {
             $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
             $stmt->execute();    // Execute the prepared query.
             $stmt->store_result();
@@ -78,10 +75,7 @@ class AuthA {
         $now            = time();
         $valid_attempts = $now - (2 * 60 * 60);
         
-        if ($stmt = $this->mysqli->prepare("SELECT time 
-                             FROM login_attempts 
-                             WHERE user_id = ? 
-                            AND time > '$valid_attempts'")) {
+        if ($stmt = $this->mysqli->prepare("SELECT time FROM login_attempts WHERE user_id = ? AND time > '$valid_attempts'")) {
             $stmt->bind_param('i', $user_id);
  
             // Execute the prepared query. 
@@ -113,8 +107,8 @@ class AuthA {
             // Get the user-agent string of the user.
             $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
-            if ($stmt = $this->mysqli->prepare("SELECT password 
-                                          FROM members 
+            if ($stmt = $this->mysqli->prepare("SELECT pass 
+                                          FROM users 
                                           WHERE id = ? LIMIT 1")) {
                 // Bind "$user_id" to parameter. 
                 $stmt->bind_param('i', $user_id);

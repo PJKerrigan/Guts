@@ -28,4 +28,8 @@ class CacheHandler {
     public function delete($key) {
         return $this->cacheable->delete($key);
     }
+    
+    public function clear() {
+        return $this->cacheable->clear();
+    }
 }
