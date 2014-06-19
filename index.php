@@ -29,10 +29,11 @@ use \Guts3\FrontController;
 use \Guts3\Auth\AuthA;
 use \Guts3\Auth\Login;
 use \Guts3\Security\SessionHandler;
+use \Guts3\Session\SessionHandler;
 
 $core       = new Core();
 $session    = new SessionHandler();
-$session->start(FALSE);
+//$session->start(FALSE);
 
 $default    = new Route("Guts3\Application\Models\DatabaseModel",
                         "Guts3\Application\ViewModels\GuestViewModel",
@@ -42,10 +43,10 @@ $router     = new Router("index", $default);
 $front      = new FrontController($router, "home", NULL);
 //echo $front->output();
 
-e("Hi.");
 $dsn        = "mysql:host=" . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8';
 $pdo        = new \PDO($dsn, DB_USER, DB_PASS, array());
 $login      = new \Guts3\Auth\Login($pdo);
+$session    = new \Guts3\Session\SessionHandler($db);
 
 $user_name  = "test_user";
 $user_email = "test@localhost";
@@ -53,3 +54,5 @@ $user_pass  = "pass_test";
 $user_salt  = "faff-faff-faff";
 $result     = $login->login($user_name, $user_email, $user_pass);
 var_dump($_SESSION);
+
+
